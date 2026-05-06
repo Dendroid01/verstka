@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+
+    <title>Frontend Mentor | News homepage</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --soft-orange: hsl(35, 77%, 62%);
+            --soft-red: hsl(5, 85%, 63%);
+
+            --off-white: hsl(36, 100%, 99%);
+            --grayish-blue: hsl(233, 8%, 79%);
+            --dark-grayish-blue: hsl(236, 13%, 42%);
+            --very-dark-blue: hsl(240, 100%, 5%);
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 89px 165px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            gap: 37px;
+            align-items: center;
+        }
+
+        .menu li {
+            line-height: 1;
+            color: var(--dark-grayish-blue);
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            padding: 50px 0px;
+        }
+
+        .detailed-news {
+            width: 730px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .detailed-news img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .news-hero {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        .news-hero-title {
+            flex: 1;
+            font-size: 60px;
+            line-height: 0.94;
+        }
+
+        .news-hero-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .news-hero-details p {
+            font-size: 15px;
+            line-height: 1.6;
+            letter-spacing: 0.1px;
+            color: var(--dark-grayish-blue);
+        }
+
+        .news {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-top: 27px;
+            padding-left: 24px;
+            padding-right: 24px;
+            background-color: var(--very-dark-blue);
+        }
+
+        .new {
+            font-weight: 700;
+            font-size: 40px;
+            color: var(--soft-orange);
+        }
+
+        .news-card {
+            display: flex;
+            flex-direction: column;
+            padding: 31px 0;
+            gap: 8px;
+        }
+
+        .news-card-title {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--off-white);
+            letter-spacing: 0.3px;
+        }
+
+        .news-card-details {
+            font-size: 15px;
+            letter-spacing: 0px;
+            line-height: 1.7;
+            color: var(--grayish-blue);
+        }
+
+        .read-more-button {
+            height: fit-content;
+            width: fit-content;
+            padding: 15px 31px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            letter-spacing: 3.1px;
+            text-align: center;
+            font-weight: 700;
+            background: var(--soft-red);
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--grayish-blue);
+        }
+
+        .articles {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        .article {
+            display: flex;
+            flex-direction: row;
+            padding: 24px 0px;
+            gap: 24px;
+            flex: 1;
+        }
+
+        .article-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .article-text{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .image-placeholder img {
+            width: 100px;
+        }
+
+        .article-number {
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 1.1;
+            letter-spacing: 2.5px;
+            color: var(--soft-red);
+        }
+
+        .article-text p{
+            font-size: 15px;
+            line-height: 1.6;
+            letter-spacing: 0.1px;
+        }
+    </style>
+
+
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="./assets/images/logo.svg" alt="logo">
+    </div>
+    <ul class="menu">
+        <li>Home</li>
+        <li>New</li>
+        <li>Popular</li>
+        <li>Trending</li>
+        <li>Categories</li>
+    </ul>
+</header>
+<div class="content">
+    <div class="detailed-news">
+        <img src="./assets/images/image-web-3-desktop.jpg" alt="news">
+        <div class="news-hero">
+            <h1 class="news-hero-title">The Bright Future of Web 3.0?</h1>
+            <div class="news-hero-details">
+                <p> We dive into the next evolution of the web that claims to put the power of the platforms back into
+                    the hands of the
+                    people.
+                    But is it really fulfilling its promise?</p>
+                <div class="read-more-button">READ MORE</div>
+            </div>
+        </div>
+    </div>
+    <div class="news">
+        <div class="new">
+            New
+        </div>
+        <div class="news-card">
+            <div class="news-card-title">Hydrogen VS Electric Cars</div>
+            <div class="news-card-details">Will hydrogen-fueled cars ever catch up to EVs?</div>
+        </div>
+        <hr>
+        <div class="news-card">
+            <div class="news-card-title">The Downsides of AI Artistry</div>
+            <div class="news-card-details">What are the possible adverse effects of on-demand AI image generation?</div>
+        </div>
+        <hr>
+        <div class="news-card">
+            <div class="news-card-title">Is VC Funding Drying Up?</div>
+            <div class="news-card-details">Private funding by VC firms is down 50% YOY. We take a look at what that
+                means.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="articles">
+    <div class="article">
+        <div class="image-placeholder">
+            <img src="assets/images/image-retro-pcs.jpg" alt="retro-pcs">
+        </div>
+        <div class="article-content">
+            <span class="article-number">01</span>
+            <div class="article-text">
+                <h3>Reviving Retro PCs</h3>
+                <p>What happens when old PCs are given modern upgrades?</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="article">
+        <div class="image-placeholder">
+            <img src="assets/images/image-top-laptops.jpg" alt="top-laptops">
+        </div>
+        <div class="article-content">
+            <span class="article-number">02</span>
+            <div class="article-text">
+                <h3>Top 10 Laptops of 2022</h3>
+                <p>Our best picks for various needs and budgets.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="article">
+        <div class="image-placeholder">
+            <img src="assets/images/image-gaming-growth.jpg" alt="gaming-growth">
+        </div>
+        <div class="article-content">
+            <span class="article-number">03</span>
+            <div class="article-text">
+                <h3>The Growth of Gaming</h3>
+                <p>How the pandemic has sparked fresh opportunities.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
