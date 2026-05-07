@@ -52,6 +52,16 @@
         .menu li {
             line-height: 1;
             color: var(--dark-grayish-blue);
+            transition: color 0.3s ease;
+        }
+
+        .menu li:hover {
+            color: var(--soft-orange);
+            cursor: pointer;
+        }
+
+        .burger-icon {
+            display: none;
         }
 
         .content {
@@ -71,6 +81,10 @@
         .detailed-news img {
             width: 100%;
             height: 100%;
+        }
+
+        .detailed-news .image-mobile {
+            display: none;
         }
 
         .news-hero {
@@ -127,19 +141,26 @@
             font-size: 20px;
             color: var(--off-white);
             letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+        }
+
+        .news-card-title:hover {
+            color: var(--soft-orange);
+            cursor: pointer;
         }
 
         .news-card-details {
             font-size: 15px;
-            letter-spacing: 0px;
             line-height: 1.7;
             color: var(--grayish-blue);
+            word-spacing: -0.4px;
         }
 
         .read-more-button {
             height: fit-content;
             width: fit-content;
             padding: 15px 31px;
+            outline: none;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -147,6 +168,14 @@
             text-align: center;
             font-weight: 700;
             background: var(--soft-red);
+            transition: background 0.3s ease,
+            color 0.3s ease;
+        }
+
+        .read-more-button:hover {
+            color: var(--off-white);
+            background: var(--very-dark-blue);
+            cursor: pointer;
         }
 
         hr {
@@ -174,11 +203,12 @@
             gap: 8px;
         }
 
-        .article-text{
+        .article-text {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
+
         .image-placeholder img {
             width: 100px;
         }
@@ -191,10 +221,113 @@
             color: var(--soft-red);
         }
 
-        .article-text p{
+        .article-text p {
             font-size: 15px;
             line-height: 1.6;
             letter-spacing: 0.1px;
+        }
+
+        .article-text h3 {
+            transition: color 0.3s ease;
+        }
+
+        .article-text h3:hover {
+            color: var(--soft-red);
+            cursor: pointer;
+        }
+
+        @media (max-width: 376px) {
+
+            body {
+                padding: 28px 16px;
+            }
+
+            .menu {
+                display: none;
+            }
+
+            .logo img {
+                width: 45px;
+            }
+
+            .burger-icon {
+                display: flex;
+                vertical-align: center;
+            }
+
+            .burger-icon img {
+                width: 40px;
+                height: 20px;
+            }
+
+            .content {
+                flex-direction: column;
+                padding: 28px 0;
+                padding-bottom: 0;
+                gap: 64px;
+            }
+
+            .main-content{
+                display: flex;
+                flex-direction: column;
+                gap: 68px;
+            }
+            .detailed-news {
+                flex-direction: column;
+                width: 100%;
+                gap: 25px;
+            }
+
+            .detailed-news .image-desktop {
+                display: none;
+            }
+
+            .detailed-news .image-mobile {
+                display: flex;
+            }
+
+            .news-hero {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .news-hero-title {
+                flex: 1;
+                font-size: 44px;
+            }
+
+            .news-hero p {
+                line-height: 1.7;
+            }
+
+            .news-hero-details {
+                gap: 24px;
+            }
+
+            .read-more-button {
+                font-size: 16px;
+            }
+
+            .articles {
+                flex-direction: column;
+            }
+
+            .article {
+                padding: 0;
+                padding-bottom: 0;
+            }
+
+            .news {
+                padding: 20px 22px;
+            }
+
+            .new {
+                font-size: 32px;
+            }
+
+            .news-card:last-child {
+                padding-bottom: 0;
+            }
         }
     </style>
 
@@ -212,83 +345,91 @@
         <li>Trending</li>
         <li>Categories</li>
     </ul>
+    <div class="burger-icon">
+        <img src="./assets/images/icon-menu.svg" alt="burger-menu">
+    </div>
 </header>
-<div class="content">
-    <div class="detailed-news">
-        <img src="./assets/images/image-web-3-desktop.jpg" alt="news">
-        <div class="news-hero">
-            <h1 class="news-hero-title">The Bright Future of Web 3.0?</h1>
-            <div class="news-hero-details">
-                <p> We dive into the next evolution of the web that claims to put the power of the platforms back into
-                    the hands of the
-                    people.
-                    But is it really fulfilling its promise?</p>
-                <div class="read-more-button">READ MORE</div>
+<div class="main-content">
+    <div class="content">
+        <div class="detailed-news">
+            <img class="image-desktop" src="./assets/images/image-web-3-desktop.jpg" alt="news">
+            <img class="image-mobile" src="./assets/images/image-web-3-mobile.jpg" alt="news">
+            <div class="news-hero">
+                <h1 class="news-hero-title">The Bright Future of Web 3.0?</h1>
+                <div class="news-hero-details">
+                    <p> We dive into the next evolution of the web that claims to put the power of the platforms back
+                        into
+                        the hands of the
+                        people.
+                        But is it really fulfilling its promise?</p>
+                    <div class="read-more-button">READ MORE</div>
+                </div>
+            </div>
+        </div>
+        <div class="news">
+            <div class="new">
+                New
+            </div>
+            <div class="news-card">
+                <div class="news-card-title">Hydrogen VS Electric Cars</div>
+                <div class="news-card-details">Will hydrogen-fueled cars ever catch up to EVs?</div>
+            </div>
+            <hr>
+            <div class="news-card">
+                <div class="news-card-title">The Downsides of AI Artistry</div>
+                <div class="news-card-details">What are the possible adverse effects of on-demand AI image generation?
+                </div>
+            </div>
+            <hr>
+            <div class="news-card">
+                <div class="news-card-title">Is VC Funding Drying Up?</div>
+                <div class="news-card-details">Private funding by VC firms is down 50% YOY. We take a look at what that
+                    means.
+                </div>
             </div>
         </div>
     </div>
-    <div class="news">
-        <div class="new">
-            New
-        </div>
-        <div class="news-card">
-            <div class="news-card-title">Hydrogen VS Electric Cars</div>
-            <div class="news-card-details">Will hydrogen-fueled cars ever catch up to EVs?</div>
-        </div>
-        <hr>
-        <div class="news-card">
-            <div class="news-card-title">The Downsides of AI Artistry</div>
-            <div class="news-card-details">What are the possible adverse effects of on-demand AI image generation?</div>
-        </div>
-        <hr>
-        <div class="news-card">
-            <div class="news-card-title">Is VC Funding Drying Up?</div>
-            <div class="news-card-details">Private funding by VC firms is down 50% YOY. We take a look at what that
-                means.
+    <div class="articles">
+        <div class="article">
+            <div class="image-placeholder">
+                <img src="assets/images/image-retro-pcs.jpg" alt="retro-pcs">
+            </div>
+            <div class="article-content">
+                <span class="article-number">01</span>
+                <div class="article-text">
+                    <h3>Reviving Retro PCs</h3>
+                    <p>What happens when old PCs are given modern upgrades?</p>
+                </div>
+
             </div>
         </div>
-    </div>
-</div>
-<div class="articles">
-    <div class="article">
-        <div class="image-placeholder">
-            <img src="assets/images/image-retro-pcs.jpg" alt="retro-pcs">
-        </div>
-        <div class="article-content">
-            <span class="article-number">01</span>
-            <div class="article-text">
-                <h3>Reviving Retro PCs</h3>
-                <p>What happens when old PCs are given modern upgrades?</p>
+
+        <div class="article">
+            <div class="image-placeholder">
+                <img src="assets/images/image-top-laptops.jpg" alt="top-laptops">
             </div>
+            <div class="article-content">
+                <span class="article-number">02</span>
+                <div class="article-text">
+                    <h3>Top 10 Laptops of 2022</h3>
+                    <p>Our best picks for various needs and budgets.</p>
+                </div>
 
-        </div>
-    </div>
-
-    <div class="article">
-        <div class="image-placeholder">
-            <img src="assets/images/image-top-laptops.jpg" alt="top-laptops">
-        </div>
-        <div class="article-content">
-            <span class="article-number">02</span>
-            <div class="article-text">
-                <h3>Top 10 Laptops of 2022</h3>
-                <p>Our best picks for various needs and budgets.</p>
             </div>
-
         </div>
-    </div>
 
-    <div class="article">
-        <div class="image-placeholder">
-            <img src="assets/images/image-gaming-growth.jpg" alt="gaming-growth">
-        </div>
-        <div class="article-content">
-            <span class="article-number">03</span>
-            <div class="article-text">
-                <h3>The Growth of Gaming</h3>
-                <p>How the pandemic has sparked fresh opportunities.</p>
+        <div class="article">
+            <div class="image-placeholder">
+                <img src="assets/images/image-gaming-growth.jpg" alt="gaming-growth">
             </div>
+            <div class="article-content">
+                <span class="article-number">03</span>
+                <div class="article-text">
+                    <h3>The Growth of Gaming</h3>
+                    <p>How the pandemic has sparked fresh opportunities.</p>
+                </div>
 
+            </div>
         </div>
     </div>
 </div>
