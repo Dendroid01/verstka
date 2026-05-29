@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+
+    <title>Frontend Mentor | Contact form</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green-200: hsl(148, 38%, 91%);
+            --green-600: hsl(169, 82%, 27%);
+            --red: hsl(0, 66%, 54%);
+            --white: hsl(0, 0%, 100%);
+            --grey-500: hsl(186, 15%, 59%);
+            --grey-900: hsl(187, 24%, 22%);
+
+        }
+
+        body {
+            padding: 0 40px;
+        }
+
+        main {
+            background-color: var(--green-200);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 128px 0;
+
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            width: 735px;
+            padding: 39px 40px;
+            font-family: 'Karla', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            border-radius: 15px;
+        }
+
+        .row, .query-row {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+        }
+
+        .label {
+            font-family: 'Karla', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 12px;
+        }
+
+        .input {
+            height: 51px;
+            border-radius: 8px;
+        }
+
+        .field:has(input[required]) .label::after {
+            margin-left: 5px;
+            content: " *";
+            color: var(--green-600);
+        }
+
+        .field:has(textarea[required]) .label::after {
+            margin-left: 5px;
+            content: " *";
+            color: var(--green-600);
+        }
+
+        .contact-form-content {
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+        }
+
+        .query-option {
+            flex: 1;
+        }
+
+        .label.required::after {
+            margin-left: 5px;
+            content: " *";
+            color: var(--green-600);
+        }
+
+        .query-type {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .query-option {
+            border: 1px solid;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 5px 26px;
+            gap: 16px;
+            font-family: 'Karla', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            border-radius: 8px;
+        }
+
+        .query-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--green-600);
+            cursor: pointer;
+        }
+
+        .input-textarea {
+            border-radius: 6px;
+        }
+
+        .checkbox-wrapper {
+            margin-top: 14px;
+            padding: 0 4px;
+            display: flex;
+            gap: 18px;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--green-600);
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper label {
+            font-family: 'Karla', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .contact-form-button {
+            margin-top: 16px;
+            height: 60px;
+            border-radius: 8px;
+            border: none;
+            background-color: var(--green-600);
+            color: var(--white);
+            font-family: 'Karla', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper .required::after {
+            content: " *";
+            color: var(--green-600);
+        }
+
+        .input,
+        .input-textarea {
+            padding: 0 23px;
+            font-family: 'Karla', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--grey-900);
+        }
+
+        .query-option label {
+            font-family: 'Karla', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--grey-900);
+        }
+
+        .input:hover,
+        .input-textarea:hover {
+            border-color: var(--green-600);
+            cursor: pointer;
+        }
+
+        .query-option:hover {
+            border-color: var(--green-600);
+            cursor: pointer;
+            background-color: var(--green-200);
+        }
+
+        .input-textarea {
+            field-sizing: content;
+            min-height: 120px;
+            max-height: 280px;
+            padding: 10px 22px;
+            line-height: 1.5;
+            border: 1px solid var(--grey-500);
+            resize: vertical;
+            font-family: 'Karla', sans-serif;
+            font-size: 18px;
+        }
+
+        .query-option:active {
+            transform: scale(0.98);
+            background-color: var(--green-600);
+            border-color: var(--green-600);
+            transition: all 0.05s ease;
+        }
+
+        .input:focus,
+        .input-textarea:focus {
+            border-color: var(--green-600);
+            border: 2px solid var(--green-600);
+            outline: none;
+        }
+
+        .input {
+            border-width: 1px;
+        }
+
+        .query-option:has(input[type="radio"]:checked) {
+            background-color: var(--green-200);
+            border-color: var(--green-600);
+        }
+
+        .error-message {
+            display: none;
+            font-family: 'Karla', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--red);
+        }
+
+        .field.error .input,
+        .field.error .input-textarea {
+            border-color: var(--red);
+        }
+
+        .query-type.error .query-option {
+            border-color: var(--red);
+        }
+
+        .checkbox-wrapper.error {
+            position: relative;
+        }
+
+        .field.error .error-message,
+        .query-type.error .error-message,
+        .checkbox-wrapper.error + .error-message {
+            display: block;
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        .field.error .input,
+        .field.error .input-textarea,
+        .query-type.error .query-option {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @media (max-width: 376px) {
+
+
+            .row {
+                flex-direction: column;
+                gap: 26px;
+            }
+
+            main {
+                padding: 32px 16px;
+            }
+
+            body {
+                padding: 0;
+            }
+
+            .contact-form {
+                width: 100%;
+                padding: 23px 25px;
+            }
+
+            .query-option {
+                min-height: 50px;
+            }
+
+            .query-row{
+                flex-direction: column;
+                height: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <form class="contact-form">
+        <h1 class="contact-form-title">Contact Us</h1>
+        <div class="contact-form-content">
+
+            <div class="row">
+                <div class="field">
+                    <label for="first-name" class="label"> First Name</label>
+                    <input type="text" id="first-name" class="input" required>
+                    <div class="error-message">This field is required</div>
+                </div>
+
+                <div class="field">
+                    <label for="last-name" class="label"> Last Name</label>
+                    <input type="text" id="last-name" class="input" required>
+                    <div class="error-message">This field is required</div>
+                </div>
+
+            </div>
+
+            <div class="field">
+                <label for="email" class="label"> Email Address</label>
+                <input type="text" id="email" class="input" required>
+                <div class="error-message">Please enter a valid email address</div>
+            </div>
+
+            <div class="query-type">
+                <p class="label required"> Query Type</p>
+                <div class="query-row">
+                    <label class="query-option">
+                        <input type="radio" name="query-type" value="general" required>
+                        General Enquiry
+                    </label>
+                    <label class="query-option">
+                        <input type="radio" name="query-type" value="support" required>
+                        Support Request
+                    </label>
+                </div>
+                <div class="error-message">Please select a query type</div>
+            </div>
+
+            <div class="field">
+                <label for="message" class="label"> Message</label>
+                <textarea id="message" class="input-textarea" required></textarea>
+                <div class="error-message">This field is required</div>
+            </div>
+
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="consent" required>
+                <label for="consent" class="required">I consent to being contacted by the team</label>
+            </div>
+            <div class="error-message">To submit this form, please consent to being contacted</div>
+
+            <button class="contact-form-button">Submit</button>
+
+        </div>
+    </form>
+
+</main>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('.contact-form');
+        const firstName = document.getElementById('first-name');
+        const lastName = document.getElementById('last-name');
+        const email = document.getElementById('email');
+        const queryRadios = document.querySelectorAll('input[name="query-type"]');
+        const message = document.getElementById('message');
+        const consent = document.getElementById('consent');
+
+        // Правила валидации
+        const validationRules = [
+            {
+                field: firstName,
+                type: 'required',
+                errorMessage: 'This field is required',
+                validate: function (value) {
+                    return value.trim() !== '';
+                }
+            },
+            {
+                field: lastName,
+                type: 'required',
+                errorMessage: 'This field is required',
+                validate: function (value) {
+                    return value.trim() !== '';
+                }
+            },
+            {
+                field: email,
+                type: 'email',
+                errorMessage: 'Please enter a valid email address',
+                validate: function (value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return value.trim() !== '' && emailRegex.test(value);
+                }
+            },
+            {
+                field: message,
+                type: 'required',
+                errorMessage: 'This field is required',
+                validate: function (value) {
+                    return value.trim() !== '';
+                }
+            },
+            {
+                field: queryRadios,
+                type: 'radio',
+                errorMessage: 'Please select a query type',
+                validate: function () {
+                    let isChecked = false;
+                    queryRadios.forEach(radio => {
+                        if (radio.checked) isChecked = true;
+                    });
+                    return isChecked;
+                }
+            },
+            {
+                field: consent,
+                type: 'checkbox',
+                errorMessage: 'To submit this form, please consent to being contacted',
+                validate: function () {
+                    return consent.checked;
+                }
+            }
+        ];
+
+        // Функция валидации email
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Функция проверки поля
+        function validateField(field) {
+            const fieldContainer = field.closest('.field');
+            const value = field.value.trim();
+            let isValid = false;
+
+            if (field.id === 'email') {
+                isValid = value !== '' && isValidEmail(value);
+            } else {
+                isValid = value !== '';
+            }
+
+            if (isValid) {
+                fieldContainer.classList.remove('error');
+                fieldContainer.classList.add('success');
+            } else {
+                fieldContainer.classList.remove('success');
+                fieldContainer.classList.add('error');
+            }
+
+            return isValid;
+        }
+
+        // Универсальная функция валидации по правилам
+        function validateRule(rule) {
+            let isValid = false;
+
+            if (rule.type === 'radio') {
+                isValid = rule.validate();
+                const queryContainer = document.querySelector('.query-type');
+                if (isValid) {
+                    queryContainer.classList.remove('error');
+                    queryContainer.classList.add('success');
+                } else {
+                    queryContainer.classList.remove('success');
+                    queryContainer.classList.add('error');
+                }
+            } else if (rule.type === 'checkbox') {
+                isValid = rule.validate();
+                const checkboxWrapper = document.querySelector('.checkbox-wrapper');
+                if (isValid) {
+                    checkboxWrapper.classList.remove('error');
+                    checkboxWrapper.classList.add('success');
+                } else {
+                    checkboxWrapper.classList.remove('success');
+                    checkboxWrapper.classList.add('error');
+                }
+            } else {
+                const field = rule.field;
+                const fieldContainer = field.closest('.field');
+                const value = field.value;
+                isValid = rule.validate(value);
+
+                if (isValid) {
+                    fieldContainer.classList.remove('error');
+                    fieldContainer.classList.add('success');
+                } else {
+                    fieldContainer.classList.remove('success');
+                    fieldContainer.classList.add('error');
+                }
+            }
+
+            return isValid;
+        }
+
+        // Валидация всей формы
+        function validateForm() {
+            let isValid = true;
+
+            validationRules.forEach(rule => {
+                const isRuleValid = validateRule(rule);
+                if (!isRuleValid) isValid = false;
+            });
+
+            return isValid;
+        }
+
+        // Обработчики событий для实时 валидации
+        firstName.addEventListener('blur', () => validateRule(validationRules[0]));
+        lastName.addEventListener('blur', () => validateRule(validationRules[1]));
+        email.addEventListener('blur', () => validateRule(validationRules[2]));
+        message.addEventListener('blur', () => validateRule(validationRules[3]));
+        consent.addEventListener('blur', () => validateRule(validationRules[5]));
+        queryRadios.forEach(radio => {
+            radio.addEventListener('blur', () => validateRule(validationRules[4]));
+        });
+
+        // Обработка отправки формы
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (validateForm()) {
+                console.log('Form is valid!');
+                alert('Form submitted successfully!');
+
+                document.querySelectorAll('.success').forEach(el => {
+                    el.classList.remove('success');
+                });
+            } else {
+                console.log('Form has errors!');
+                const firstError = document.querySelector('.error');
+                if (firstError) {
+                    firstError.scrollIntoView({behavior: 'smooth', block: 'center'});
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
